@@ -54,19 +54,17 @@ for i in range(0,5000):
             posx[index] = rx_new
             posy[index] = ry_new
             v = vnew
-fig1=plt.figure(1)            
-fig1=plt.scatter(posx,posy)
-fig1=plt.title('N=3, T=1')
-plt.show()					# Update regardless of acceptance!
+					# Update regardless of acceptance!
 
-count = 0
-cunt = -1
 r2 = n.zeros(N-1)
 arrcount = n.zeros((N,3588)) 
 avecount = n.zeros(3588)
 for i in range(0,N):
+    print i
     p0x = posx[i]
     p0y = posy[i]
+    cunt = -1
+    count = 0
     for j in range(0,N):
         if j is not i:  
             cunt+=1
@@ -77,15 +75,21 @@ for i in range(0,N):
                 if r2[l] >= (.125+ (k-1)*.01):
                     count+=1
         arrcount[l,k]=count
-    count = 0
 for i in range(0,3588):
     rdf[i] = n.mean(arrcount[:,i])
 xaxis= list(n.arange(.125, 36.05, .01))
-fig2 = plt.figure(1)
+
+
+fig1=plt.figure(1)            
+fig1=plt.scatter(posx,posy)
+fig1=plt.title('N=3, T=1')
+
+
+fig2 = plt.figure(2)
 fig2 = plt.scatter(xaxis, rdf)
 fig2 = plt.xlabel('r', fontsize=18)
 fig2 = plt.ylabel('g(r)', fontsize=18)
-    
+plt.show()    
 
 # Calculating G(r) (radial distribution function) of a water box, 
 # taking into account periodic boundaries
