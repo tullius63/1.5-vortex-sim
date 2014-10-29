@@ -69,6 +69,8 @@ for i in range(0,N):
         if j is not i:  
             cunt+=1
             r2[cunt] = m.sqrt((posx[cunt]-p0x)**2+(posy[cunt]-p0y)**2)
+        else:
+            continue
     for k in range(0,3588):
         for l in range(0,N-1):
             if r2[l] < (.125+ k*.01):
